@@ -1,0 +1,11 @@
+version: "3"
+services:
+  twa3-jekyll:
+    image: jekyll/jekyll:latest
+    volumes:
+      - ${LOCAL_DIR}:/srv/jekyll
+    environment:
+      - JEKYLL_ENV=production
+      - NODE_ENV=production
+    command: sh -c "bundle config set --local path vendor/bundle && bundle install && bundle exec jekyll build --watch --config _config.yml"
+    restart: always
